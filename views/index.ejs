@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+    <h1 class="text-center mt-3 mb-5">Url Shortener</h1>
+
+    <form action="/shorturl" method="POST" class="my-4 form-inline">
+        <input type="url" placeholder="Your Url" name="fullUrls" class="form-control mb-3" />
+        <button type="submit" class="btn btn-primary float-end">Short</button>
+    </form>
+
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Full Url</th>
+                <th>Short Url</th>
+            </tr>
+        </thead>
+<tbody>
+    <%
+    allUrls.forEach(shortUrl => { %>
+
+        <tr>
+            <td><a href="<%= shortUrl.fullUrl %>"><%= shortUrl.fullUrl %></a></td>
+            <td><a href="<%= shortUrl.shortUrl %>"><%= shortUrl.shortUrl %></a></td>
+        </tr>
+<%
+    })
+    %> 
+</tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>
