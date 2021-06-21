@@ -33,6 +33,19 @@ app.get("/:shortUrl", async (req, res) => {
     res.redirect(shortUrl.fullUrl)
 })
 
+app.get("/remove/:id", async(req, res) => {
+    const shortUrl = await ShortUrl.findByIdAndRemove(req.params.id)
+
+    if(shortUrl === null){
+        return res.status(400).json({
+            error: "Not found"
+        })
+    }
+
+    res.redirect("/")
+
+})
+
 app.post('/shorturl', async (req, res) => {
     await ShortUrl.create({fullUrl: req.body.fullUrls})
     res.redirect('/')
